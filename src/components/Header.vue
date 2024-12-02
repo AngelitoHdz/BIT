@@ -5,7 +5,7 @@
       <span class="site-name" @click="goToHome">PLAYZONE</span>
     </div>
     <nav class="nav">
-      <router-link to="/homec" class="nav-link">Ver Categorías</router-link>
+      <router-link to="/categories" class="nav-link">Ver Categorías</router-link>
       <div class="divider"></div>
       <div class="auth-buttons">
         <button
