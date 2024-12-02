@@ -5,7 +5,7 @@
       <GameCard 
         v-for="game in categoryGames" 
         :key="game.id" 
-        :game="game" 
+        :game="game"
       />
     </div>
   </div>
