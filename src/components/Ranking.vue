@@ -56,19 +56,26 @@ export default {
 .ranking-section {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  align-items: center;
+  padding: 60px 0; 
+  background-image: url('../assets/background.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  width: 100%; 
 }
 
 .ranking-container {
-  background-color: black; 
-  border: 3px solid black; 
-  border-radius: 8px; 
-  padding: 10px;
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-around;
   align-items: flex-start;
-  gap: 10px;
-  width: 90%; 
+  gap: 20px; 
+  width: 70%; 
+  max-width: 1400px; 
+  background-color: rgba(0, 0, 0, 0.75); 
+  padding: 40px; 
+  border-radius: 30px; 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
 }
 
 .ranking-card {
@@ -76,34 +83,25 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  width: 100%; 
-}
-
-.ranking-card:nth-child(1) {
-  flex: 1; 
-}
-
-.ranking-card:nth-child(2),
-.ranking-card:nth-child(3) {
-  flex: 1; 
+  width: 100%;
+  max-width: 500px;
 }
 
 .ranking-image {
-  width: 100%; 
-  height: auto; 
-  object-fit: contain; 
-  border: 2px solid black; 
-  border-radius: 5px; 
+  width: 100%;
+  height: 250px; 
+  object-fit: cover; 
+  border-radius: 8px; 
 }
 
 .ranking-label {
-  margin-top: 5px;
-  padding: 10px 5px;
-  font-size: 14px;
+  margin-top: 15px;
+  padding: 12px 8px;
+  font-size: 18px; 
   font-weight: bold;
   text-align: center;
   color: white;
-  border-radius: 4px; 
-  width: 100%; 
+  border-radius: 6px;
+  width: 100%;
 }
 </style>
