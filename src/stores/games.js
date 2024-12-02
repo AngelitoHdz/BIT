@@ -1,4 +1,4 @@
-const games = {
+const gameCategories = {
   strategy: {
     title: 'JUEGOS DE ESTRATEGIA',
     backgroundColor: '#FDE47F',
@@ -65,4 +65,4 @@ const games = {
   }
 }
 
-export default games
+export default gameCategories
