@@ -1,42 +1,50 @@
-<script setup lang="ts">
-import { useGamesStore } from '../stores/gamesc'
-import { computed } from 'vue'
+<template>
+  <div class="category-view">
+    <h1>{{ category }}</h1>
+    <div class="games-grid">
+      <GameCard 
+        v-for="game in categoryGames" 
+        :key="game.id" 
+        :game="game" 
+      />
+    </div>
+  </div>
+</template>
 
-const props = defineProps<{
-  name: string
-}>()
+<script setup>
+import { computed } from 'vue'
+import { useGamesStore } from '../stores/games'
+import GameCard from '../components/GameCard.vue'
+
+const props = defineProps({
+  category: {
+    type: String,
+    required: true
+  }
+})
 
 const store = useGamesStore()
-const games = computed(() => store.gamesByCategory(props.name))
-const categoryStyle = computed(() => store.getCategoryStyle(props.name))
+const categoryGames = computed(() => {
+  const categoryKey = props.category.toLowerCase()
+  return store.categories[categoryKey]?.games || []
+})
 </script>
 
-<template>
-  <main class="container py-5">
-    <div :class="[categoryStyle, 'p-4 rounded']">
-      <h1 class="h4 mb-4 text-dark fw-bold">{{ name }}</h1>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-        <div
-          v-for="game in games"
-          :key="game.id"
-          class="col"
-        >
-          <div class="card h-100 shadow-sm">
-            <img 
-              :src="game.image" 
-              :alt="game.name" 
-              class="card-img-top img-fluid p-2"
-              style="height: 200px; object-fit: contain;"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title text-dark fw-bold">{{ game.name }}</h5>
-              <p class="card-text text-dark fw-bold mt-2">
-                ${{ game.price.toLocaleString() }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</template>
+<style scoped>
+.category-view {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+}
+</style>
